@@ -1,11 +1,13 @@
 import requests
 
 
-def fetch_repos_issues_by_name(repo_name: str, owner: str, token=None):
+def fetch_repos_issues_by_name(repo_name: str, owner: str, issue_count=10, token=None):
+    if token is None:
+        raise Exception("GitHub token is required to authenticate the request.")
     query = f"""
     query {{
       repository(owner: "{owner}", name: "{repo_name}") {{
-        issues(orderBy: {{ field: CREATED_AT, direction: DESC }}) {{
+        issues(first: {issue_count}, orderBy: {{ field: CREATED_AT, direction: DESC }}) {{
           edges {{
             node {{
               title

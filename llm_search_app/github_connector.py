@@ -48,12 +48,3 @@ def fetch_repos_issues_by_name(repo_name: str, owner: str, issue_count=10, token
         return response.json()
     else:
         raise Exception(f"Request failed with status code {response.status_code}: {response.json()}")
-
-
-if __name__ == "__main__":
-    repo_name = "scikit-learn"  
-    owner = "scikit-learn" 
-    token = None  # Replace with your GitHub token if needed
-
-    issues = fetch_repos_issues_by_name(repo_name, owner, token)
-    print(issues)

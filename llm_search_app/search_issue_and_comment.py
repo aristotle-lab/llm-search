@@ -1,8 +1,10 @@
 import os
 from langchain.embeddings import OpenAIEmbeddings
+from pinecone import Index
 
 
-def hybrid_search(query_text, index, top_k=5):
+
+def search(query_text:str, index: Index, top_k=5):
     """
     Perform a hybrid search across issues, comments, and combined embeddings.
 
@@ -26,7 +28,7 @@ def hybrid_search(query_text, index, top_k=5):
 
         results[type_filter] = index.query(
             vector=query_vector,
-            top_k=1,
+            top_k=top_k,
             include_metadata=True,
             filter={"type": type_filter}
         )["matches"]
@@ -34,7 +36,16 @@ def hybrid_search(query_text, index, top_k=5):
     return results
   
 # # Usage
-# outputs = hybrid_search(query_text="nPartialDependenceDisplay", index=index)
+# api_key = os.getenv("PINECONE_API_KEY")
+# index_manager = PineconeIndexManager(
+#   api_key=api_key,
+#   index_name="github-issues",
+#   dimension=1536,
+#   cloud="aws",
+#   region="us-east-1"
+# )
+# index = index_manager.create_or_connect_index()
+# outputs = search(query_text="nPartialDependenceDisplay", index=index)
 # # Display results
 # for category, matches in outputs.items():
 #     print(f"Results for {category}:")

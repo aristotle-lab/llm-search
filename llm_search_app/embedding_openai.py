@@ -1,9 +1,10 @@
+from typing import Dict
 from langchain.embeddings import OpenAIEmbeddings
 from pinecone import Index
 import logging
 import os
 
-def process_issues_and_store_hybrid(issues, index: Index, min_comment_length=10):
+def process_issues_and_store_hybrid(issues: Dict, index: Index, min_comment_length=10):
     """
     Process GitHub issues and comments, and store their embeddings in Pinecone.
 
@@ -53,7 +54,7 @@ def process_issues_and_store_hybrid(issues, index: Index, min_comment_length=10)
             comment_created_at = comment_node["createdAt"]
 
             # Skip empty or invalid comments
-            if not comment_text or len(comment_text) < 10:
+            if not comment_text or len(comment_text) < min_comment_length:
                 continue
 
             # Embed comment

@@ -44,7 +44,6 @@ def process_issues_and_store_hybrid(issues, index: Index, min_comment_length=10)
         # Process and embed comments
         comments = issue_node["comments"]["edges"]
         comment_vectors = []
-        comment_texts = []
 
         for comment in comments:
             comment_node = comment["node"]
@@ -69,7 +68,6 @@ def process_issues_and_store_hybrid(issues, index: Index, min_comment_length=10)
                 "issue_title": issue_title
             }
             comment_vectors.append((f"comment-{comment_created_at}", comment_vector, comment_metadata))
-            comment_texts.append(f"- {comment_author}: {comment_text}")
 
         # Store comment embeddings
         if comment_vectors:

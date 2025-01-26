@@ -55,3 +55,10 @@ def generate_response_from_retrieval(query, retrieval_results):
 
     return completion.choices[0].message.content
 
+
+# Example usage
+# query = "for this issue about OpenML, have it resolved from the comment? could you also provide me the issue link?"
+# retrieval_results=hybrid_search(query, index)
+# grouped_results = generate_response_from_retrieval(query,retrieval_results)
+# print(grouped_results)
+

@@ -14,6 +14,18 @@ def fetch_repos_issues_by_name(repo_name: str, owner: str, issue_count=10, token
               number
               createdAt
               url
+              bodyText
+              comments(first: 10) {{
+                edges {{
+                  node {{
+                    author {{
+                      login
+                    }}
+                    bodyText
+                    createdAt
+                  }}
+                }}
+              }}
             }}
           }}
         }}

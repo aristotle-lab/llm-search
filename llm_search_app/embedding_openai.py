@@ -44,6 +44,7 @@ def process_issues_and_store_hybrid(issues, index: Index, min_comment_length=10)
         # Process and embed comments
         comments = issue_node["comments"]["edges"]
         comment_vectors = []
+        comment_texts = []
 
         for comment in comments:
             comment_node = comment["node"]
@@ -52,7 +53,7 @@ def process_issues_and_store_hybrid(issues, index: Index, min_comment_length=10)
             comment_created_at = comment_node["createdAt"]
 
             # Skip empty or invalid comments
-            if not comment_text or len(comment_text) < min_comment_length:
+            if not comment_text or len(comment_text) < 10:
                 continue
 
             # Embed comment
@@ -68,9 +69,25 @@ def process_issues_and_store_hybrid(issues, index: Index, min_comment_length=10)
                 "issue_title": issue_title
             }
             comment_vectors.append((f"comment-{comment_created_at}", comment_vector, comment_metadata))
+            comment_texts.append(f"- {comment_author}: {comment_text}")
 
         # Store comment embeddings
         if comment_vectors:
             index.upsert(comment_vectors)
+
+        # Embed combined text (issue + comments)
+        combined_text = f"Title: {issue_title}\n\nBody: {issue_body}\n\nComments:\n" + "\n".join(comment_texts)
+        combined_vector = embeddings.embed_query(combined_text)
+
+        # Store combined embedding
+        combined_metadata = {
+            "type": "combined",
+            "title": issue_title,
+            "url": issue_url,
+            "body": issue_body,
+            "createdAt": issue_node["createdAt"],
+            "number": issue_id
+        }
+        index.upsert([(f"combined-{issue_id}", combined_vector, combined_metadata)])
 
     logging.info("Issues and comments stored successfully!")

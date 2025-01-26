@@ -22,7 +22,7 @@ def hybrid_search(query_text, index, top_k=5):
 
     # Query the index for each type
     results = {}
-    for type_filter in ["issue","comment"]:
+    for type_filter in ["issue","comment","combined"]:
 
         results[type_filter] = index.query(
             vector=query_vector,

@@ -4,6 +4,18 @@ from pinecone import Index
 import logging
 import os
 
+
+def initialize_embeddings(model="text-embedding-ada-002"):
+        """
+        Initialize the OpenAI Embeddings model.
+
+        Returns:
+            OpenAIEmbeddings: An instance of the OpenAIEmbeddings model.
+        """
+        openai_api_key = os.getenv("OPENAI_API_KEY")
+        return OpenAIEmbeddings(model=model, openai_api_key=openai_api_key)
+
+
 def process_issues_and_store_hybrid(issues: Dict, index: Index, min_comment_length=10):
     """
     Process GitHub issues and comments, and store their embeddings in Pinecone.
@@ -17,8 +29,7 @@ def process_issues_and_store_hybrid(issues: Dict, index: Index, min_comment_leng
     """
     
     # Initialize the OpenAI Embeddings model
-    openai_api_key = os.getenv("OPENAI_API_KEY")
-    embeddings = OpenAIEmbeddings(model="text-embedding-ada-002", openai_api_key=openai_api_key)
+    embeddings = initialize_embeddings()
 
     for issue in issues["data"]["repository"]["issues"]["edges"]:
         issue_node = issue["node"]

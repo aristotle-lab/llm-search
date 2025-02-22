@@ -1,0 +1,20 @@
+version: '2.4'
+
+services:
+  postgres:
+    image: ankane/pgvector:latest  # Replace with a specific version tag in production
+    container_name: postgres_pgvector
+    mem_limit: 4g  # Allocate 4GB of memory to the container
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: fusion
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # Optionally, auto-enable the extension on first init:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:

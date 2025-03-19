@@ -1,41 +1,24 @@
 import os
-import sys
+from llama_stack_client import LlamaStackClient
 
+# Get the model ID from the environment variable
+INFERENCE_MODEL = "meta-llama/Llama-3.2-3B-Instruct"
 
-def create_http_client():
-    from llama_stack_client import LlamaStackClient
+# Check if the environment variable is se
+if INFERENCE_MODEL is None:
+    raise ValueError("The environment variable 'INFERENCE_MODEL' is not set.")
 
-    return LlamaStackClient(
-        base_url=f"http://localhost:{os.environ['LLAMA_STACK_PORT']}"
-    )
+# Initialize the clien
+client = LlamaStackClient(base_url="http://localhost:5001")
 
+# Create a chat completion reques
+response = client.inference.chat_completion(
+    messages=[
+        {"role": "system", "content": "You are a friendly assistant."},
+        {"role": "user", "content": "Write a two-sentence poem about llama."},
+    ],
+    model_id=INFERENCE_MODEL,
+)
 
-def create_library_client(template="ollama"):
-    from llama_stack import LlamaStackAsLibraryClient
-
-    client = LlamaStackAsLibraryClient(template)
-    if not client.initialize():
-        print("llama stack not built properly")
-        sys.exit(1)
-    return client
-
-
-client = (
-    create_library_client()
-)  # or create_http_client() depending on the environment you picked
-
-# List available models
-models = client.models.list()
-print("--- Available models: ---")
-for m in models:
-    print(f"- {m.identifier}")
-print()
-
-# response = client.inference.chat_completion(
-#     model_id=os.environ["INFERENCE_MODEL"],
-#     messages=[
-#         {"role": "system", "content": "You are a helpful assistant."},
-#         {"role": "user", "content": "Write a haiku about coding"},
-#     ],
-# )
-# print(response.completion_message.content)
+# Print the response
+print(response.completion_message.content)

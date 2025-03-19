@@ -1,5 +1,5 @@
 #!/bin/zsh
-
+. $HOME/.asdf/asdf.sh
 brew install asdf
 
 # Install Plugins

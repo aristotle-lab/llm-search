@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6895cbf68fb0dbf43e2d773bd2044111995edf1c9de5038a797f93aadeed6a7d"
+            "sha256": "98eae64e96074192a2382062d00804b97daf976a20708fe0bf4e005c1022922b"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -275,11 +275,12 @@
         },
         "llama-stack-client": {
             "hashes": [
-                "sha256:8ba46e199ac1a0e0bdcbe55fc776dd0b8f55771418c5f8bf7b419b7a0077fe7a",
-                "sha256:e7b66051918bc0685dfee6103d3efbcec3ae193b3e67edf025cd088539463245"
+                "sha256:2aeff88b6f836d71fd2c75d087ccc19d881fca769e05636b0ddf7b41a7c4aef8",
+                "sha256:f342969920c87d9518298fade6debecb15b7c19899eed241d61253be2bf35053"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.7'",
-            "version": "==0.1.3"
+            "version": "==0.1.5"
         },
         "lxml": {
             "hashes": [

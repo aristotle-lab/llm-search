@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 llama-stack = "*"
+llama-stack-client = "*"
 
 [dev-packages]
 

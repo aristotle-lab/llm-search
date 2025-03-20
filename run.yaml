@@ -17,10 +17,14 @@ providers:
     config:
       url: ${env.OLLAMA_URL:http://localhost:11434}
   vector_io:
-  - provider_id: sqlite-vec
-    provider_type: inline::sqlite-vec
+  - provider_id: pgvector
+    provider_type: remote::pgvector
     config:
-      db_path: ${env.SQLITE_STORE_DIR:~/.llama/distributions/ollama}/sqlite_vec.db
+      host: ${env.PGVECTOR_HOST}
+      port: ${env.PGVECTOR_PORT}
+      db: ${env.PGVECTOR_DB}
+      user: ${env.PGVECTOR_USER}
+      password: ${env.PGVECTOR_PASSWORD}
   safety:
   - provider_id: llama-guard
     provider_type: inline::llama-guard
@@ -97,21 +101,7 @@ models:
   provider_model_id: all-minilm:latest
   model_type: embedding
 shields: []
-vector_dbs:
-- provider_id: pgvector
-  vector_db_id: pgvector_db  # Unique identifier for the vector database
-  embedding_model: all-MiniLM-L6-v2  # Model ID for generating embeddings
-  embedding_dimension: 384  # Dimension of the embedding vectors
-  config:
-    db_name: ${env.DB_NAME:llm_search}
-    db_user: ${env.DB_USER:postgres}
-    db_password: ${env.DB_PASSWORD:fusion}
-    db_host: ${env.DB_HOST:localhost}
-    db_port: ${env.DB_PORT:5432}
-    table_name: embeddings
-    vector_column: embedding
-    metadata_column: metadata
-    id_column: id
+vector_dbs: []
 datasets: []
 scoring_fns: []
 benchmarks: []

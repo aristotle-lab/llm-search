@@ -8,13 +8,35 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: fusion
-      POSTGRES_DB: postgres
+      POSTGRES_DB: llm_search  # Match the db_name in run.yaml
     ports:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       # Optionally, auto-enable the extension on first init:
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  llama_stack:
+    image: llamastack/distribution-ollama  # Use the correct Llama Stack image
+    container_name: llama_stack
+    depends_on:
+      - postgres
+    environment:
+      INFERENCE_MODEL: llama3.2:3b-instruct-fp16
+      OLLAMA_URL: http://host.docker.internal:11434
+      PGVECTOR_DB: llm_search
+      PGVECTOR_USER: postgres
+      PGVECTOR_PASSWORD: fusion
+      PGVECTOR_HOST: postgres  # Use the service name of the PostgreSQL container
+      PGVECTOR_PORT: 5432
+    ports:
+      - "5001:5001"  # Expose the Llama Stack server
+    volumes:
+      - ~/.llama:/root/.llama  # Mount the .llama directory
+      - ./run.yaml:/root/run.yaml  # Mount your run.yaml file into the container
+    command: >
+      --yaml-config /root/run.yaml
+      --port 5001
 
 volumes:
   pgdata:

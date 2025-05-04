@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Core Concept</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="13bffbff-6dcb-804d-a632-fe98737584fc" class="page sans"><header><h1 class="page-title">Core Concept</h1><p class="page-description"></p></header><div class="page-body"><h1 id="13bffbff-6dcb-802c-965a-d2af537a7b6b" class=""><strong>Scaling </strong></h1><p id="13bffbff-6dcb-80c6-ac79-cd66d47d8bf2" class=""><strong>Inexperienced candidates tend to make two mistakes: (1) they leap to horizontal scaling to solve any performance problem, even when it&#x27;s not necessary, and (2) they don&#x27;t consider the implications of horizontal scaling on the rest of the system. When you encounter a scaling bottleneck, make sure you&#x27;re not throwing machines at a poor design.</strong></p><h2 id="13bffbff-6dcb-80aa-8e14-fc1cb7818386" class="">Work Distribution</h2><p id="13bffbff-6dcb-8018-8ce8-e195f349a54e" class="">The first challenge of horizontal scaling is getting the work to the right machine. This is often done via a load balancer, which will choose which node from a group to use for an incoming request. </p><p id="13bffbff-6dcb-8078-a338-fd5f00e560c0" class="">Work distribution needs to try to <strong><a href="https://brooker.co.za/blog/2024/01/18/scalability.html">keep load on the system as even as possible</a></strong>. </p><h2 id="13bffbff-6dcb-809f-958f-f7a94b17ff66" class="">Data Distribution </h2><p id="13bffbff-6dcb-80f9-9ba0-cd3520536e7b" class="">You&#x27;ll also need to consider how to distribute data across the system. For some systems, this implies keeping data in-memory on the node that&#x27;s processing the request. More frequently, this implies keeping data in a database that&#x27;s shared across all nodes.</p><p id="13bffbff-6dcb-800a-8641-d4e596c21f94" class="">You&#x27;ll need to be prepared to discuss how you&#x27;re going to keep your data <strong><a href="https://www.hellointerview.com/learn/system-design/in-a-hurry/core-concepts#consistency">Consistent</a></strong>.</p><h1 id="13bffbff-6dcb-80b5-8c6e-f27909dc4080" class="">Consistency</h1><p id="13bffbff-6dcb-80a9-af43-c661f78ca6f1" class="">In many system design interviews, you&#x27;ll be asked to discuss the consistency of your data. Consistency, at the highest level, pertains to how much your users can tolerate getting stale data. A <strong>strongly consistent</strong> system will ensure that, after the data is written, all subsequent reads will reflect that write. A <strong>weakly consistent</strong> or more commonly <strong>eventually consistent</strong> system will not make this guarantee, instead allowing for a period of time where the data is stale.</p><h1 id="13bffbff-6dcb-808d-8185-ec91c9d4b85f" class="">Locking</h1><p id="13bffbff-6dcb-80db-b0b6-dae6e6dd4228" class="">Locks happen at every scale of computer systems: there are locks in your operating system kernel, locks in your applications, locks in the database, and even distributed locks - hence they are a common topic in system design interviews. Locks are important for enforcing the correctness of our system but can be disastrous for performance.</p><p id="13bffbff-6dcb-8021-845a-e950d679c1c3" class=""><strong>Lock Granularity</strong></p><p id="13bffbff-6dcb-80b7-9edb-f379e126aa39" class="">Use fine-grained locks to minimize blocking. For example, lock only a user&#x27;s profile, not the entire user table.</p><p id="13bffbff-6dcb-8008-9ea3-f3ff0b8e9034" class=""><strong>Lock Duration</strong></p><p id="13bffbff-6dcb-807b-b4de-e1e45c85e94a" class="">Hold locks for the shortest time possible, only during the critical section.</p><p id="13bffbff-6dcb-80a1-b998-e128d849f763" class=""><strong>Lock Bypass</strong></p><p id="13bffbff-6dcb-808a-80e1-c3287689eaac" class="">Consider optimistic concurrency control for read-only or retryable operations. Use compare-and-swap when possible.</p><p id="13bffbff-6dcb-8021-99c8-d5005ed9691c" class="">Optimistic control assumes low contention, which works for many systems. However, it&#x27;s not suitable for all scenarios, like updating bank account balances.</p><h1 id="13bffbff-6dcb-8037-8df5-c91fcb7209a3" class="">Indexing</h1><p id="13bffbff-6dcb-80e1-809b-d9b1cc441410" class="">Indexing improves data retrieval efficiency. A basic method uses hash maps, allowing O(1) time access by key. Another approach uses sorted lists, enabling O(log n) time retrieval through binary search, common in databases.</p><h3 id="13bffbff-6dcb-8005-bdcf-de4ec05b9b10" class=""><strong>Specialized Indexes</strong></h3><p id="13bffbff-6dcb-80ee-9ce8-fdc1fb782588" class="">Specialized indexes solve specific problems:<br/>• Geospatial indexes for location data (e.g., finding nearest restaurant)<br/>• Vector databases for high-dimensional data (e.g., similar image search)<br/>• Full-text indexes for text data (e.g., document search)<br/></p><p id="13bffbff-6dcb-804a-97b1-d7e617bbbd92" class="">Mature databases like Postgres often support specialized index extensions (e.g., PostGIS for geospatial). Otherwise, maintain indexes externally.</p><p id="13bffbff-6dcb-80fd-b9a6-c5aba5b34cc8" class=""><strong><a href="https://www.hellointerview.com/learn/system-design/deep-dives/elasticsearch">ElasticSearch</a></strong> is recommended for secondary indexes, supporting full-text, geospatial, and vector indexes. It can be set up with Change Data Capture (CDC) to sync with databases, though this introduces potential latency and failure points.<div class="indented"><p id="13bffbff-6dcb-80e4-8d4b-c29c1428c6ec" class=""><strong>It&#x27;s very common for candidates to introduce ElasticSearch as a potential solution to their problem without understanding its limitations or explaining how it&#x27;s used.</strong></p></div></p><h1 id="13bffbff-6dcb-8020-9b5f-c03689cf6c72" class="">Communication Protocols</h1><p id="13bffbff-6dcb-8017-a9dc-c6f6f61a7a1a" class="">There are two categories of protocols to consider: internal and external. For internal communication in a typical microservice application—which covers over 90% of system design problems—either HTTP(S) or gRPC will suffice. Keep it simple. Externally, you&#x27;ll need to consider how your clients will communicate with your system: who initiates the communication, what are the latency considerations, and how much data needs to be sent.</p><ul id="13bffbff-6dcb-80e1-97c0-e4001cf8cad8" class="bulleted-list"><li style="list-style-type:disc">HTTP(s): Use HTTP(S) for APIs with simple request and responses.</li></ul><ul id="13bffbff-6dcb-80ff-b519-fc04c841f9c4" class="bulleted-list"><li style="list-style-type:disc">SSE (Server Sent Events (SSE): An efficient method for server-to-client updates. Unlike long polling, SSE uses a single, long-lived HTTP connection to push data from server to client when available. This makes it ideal for scenarios requiring frequent, unidirectional updates. SSE is simpler than WebSockets, as it&#x27;s designed solely for server-to-client communication. This simplicity allows for easier implementation and integration with existing HTTP infrastructure, including load balancers and firewalls, without special handling.</li></ul><ul id="13bffbff-6dcb-80b9-9d75-c85cb230eabb" class="bulleted-list"><li style="list-style-type:disc">Long pulling: If you need to give your clients near-realtime updates, you&#x27;ll need a way for the clients to receive updates from the server.</li></ul><ul id="13bffbff-6dcb-8034-a710-fd35ea5f02af" class="bulleted-list"><li style="list-style-type:disc">Websockets: WebSockets are for real-time, two-way communication between client and server. However, they present challenges in system design. Maintaining connections can strain load balancers, firewalls, and servers, especially with numerous open connections. A common solution is to use a message broker. This intermediary handles communication between clients and servers, while backend services interact with the broker. This approach simplifies connection management and improves scalability. </li></ul><h1 id="13bffbff-6dcb-808e-a696-c02ec0998c89" class="">Security</h1><h2 id="13bffbff-6dcb-8044-82c7-ed8f05c9f61f" class=""><strong>Authentication / Authorization</strong></h2><p id="13bffbff-6dcb-80d7-b8c1-fdb217b18e28" class="">Delegating authentication and authorization to an API Gateway or a dedicated service like Auth0 is an excellent way to avoid reinventing the wheel. Your interviewer might ask about the specifics of securing entities, but often it&#x27;s sufficient to state, &quot;My API Gateway will handle authentication and authorization.&quot;</p><h2 id="13bffbff-6dcb-80e1-8a8a-c6d6094794b8" class="">Encryption</h2><p id="13bffbff-6dcb-80cf-a3f0-ea8233dab55b" class="">You&#x27;ll want to cover both the data in transit (e.g. via protocol encryption) and the data at rest (e.g. via storage encryption). HTTPS is the SSL/TLS protocol that encrypts data in transit and is the standard for web traffic.</p><h2 id="13bffbff-6dcb-80d4-b68f-eb70d14e844d" class=""><strong>Data Protection</strong></h2><h1 id="13bffbff-6dcb-807a-9a15-e64f84a0ed5b" class=""><strong>Monitoring</strong></h1><p id="13bffbff-6dcb-8002-8d9f-ee0d123be8eb" class="">Once you&#x27;ve designed your system, some interviewers will ask you to discuss how you&#x27;ll monitor it. The idea here is simple: candidates who understand monitoring are more likely to have experience with actual systems in production. </p><h2 id="13bffbff-6dcb-803e-98b3-e1f6c5597605" class=""><strong>Infrastructure Monitoring</strong></h2><p id="13bffbff-6dcb-8088-a5af-e6f2d3733079" class="">Infrastructure monitoring is the process of monitoring the health and performance of your infrastructure. This includes things like CPU usage, memory usage, disk usage, and network usage. This is often done with a tool like Datadog or New Relic.</p><h2 id="13bffbff-6dcb-8025-804a-df0c75f6fdce" class=""><strong>Service-Level Monitoring</strong></h2><p id="13bffbff-6dcb-80c6-9ae4-c75364d1242d" class="">Service-level monitoring is the process of monitoring the health and performance of your services. </p><h2 id="13bffbff-6dcb-80a0-b7dd-ff72326e0ddd" class=""><strong>Application-Level Monitoring</strong></h2><p id="13bffbff-6dcb-8078-b594-ef599a489aa3" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

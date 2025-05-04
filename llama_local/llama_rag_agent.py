@@ -12,22 +12,20 @@ from termcolor import colored
 
 
 def main(disable_safety: bool = False):
-    urls = [
-        "memory_optimizations.rst",
-        "chat.rst",
-        "llama3.rst",
-        "datasets.rst",
-        "qat_finetune.rst",
-        "lora_finetune.rst",
+    file_name = [
+        'llama_local/files/Core Concept 13bffbff6dcb804da632fe98737584fc.html',
+        'llama_local/files/Key Technologies 13bffbff6dcb803ba576f10cf1019bfc.html',
+        'llama_local/files/Patterns 13cffbff6dcb804499f2c66ea0f44ce9.html',
+        'llama_local/files/System Design Learning Delivery Format 13bffbff6dcb80a394d5e922434d03da.html'
     ]
     documents = [
         RAGDocument(
             document_id=f"num-{i}",
-            content=f"https://raw.githubusercontent.com/pytorch/torchtune/main/docs/source/tutorials/{url}",
-            mime_type="text/plain",
+            content=f"{f}",
+            mime_type="text/html",
             metadata={},
         )
-        for i, url in enumerate(urls)
+        for i, f in enumerate(file_name)
     ]
     model_id = "meta-llama/Llama-3.2-3B-Instruct"
 
@@ -71,7 +69,7 @@ def main(disable_safety: bool = False):
     agent = Agent(
         client,
         model=model_id,
-        instructions="You are a helpful assistant. Use knowledge_search tool to gather information needed to answer questions. Answer succintly.",
+        instructions="You are a interview coach. Use knowledge_search tool to gather information needed to answer questions for students who are prepare system design interview. Answer succintly.",
         sampling_params={
             "strategy": {"type": "top_p", "temperature": 1.0, "top_p": 0.9},
         },
@@ -86,9 +84,12 @@ def main(disable_safety: bool = False):
     print(f"Created session_id={session_id} for Agent({agent.agent_id})")
 
     user_prompts = [
-        "Was anything related to 'Llama3' discussed, if so what?",
-        "Tell me how to use LoRA",
-        "What about Quantization?",
+        "Tell me about the system design learning delivery format",
+        "What are the key technologies?",
+        "What are the core concepts?",
+        "What are the patterns?",
+        "What are the key technologies?",
+        "I am a newcomer to system design. Can you help me?",
     ]
 
     for prompt in user_prompts:

@@ -1,0 +1,685 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Key Technologies</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="13bffbff-6dcb-803b-a576-f10cf1019bfc" class="page sans"><header><h1 class="page-title">Key Technologies</h1><p class="page-description"></p></header><div class="page-body"><h1 id="13bffbff-6dcb-80e4-933e-ebddb8945df8" class="">Core Database</h1><h3 id="13bffbff-6dcb-8047-8e0f-fdee02470778" class="">Relational database or NoSQL database</h3><p id="13bffbff-6dcb-80c8-b22e-cc71e623d18b" class=""><strong>Many candidates stumble by attempting to compare relational and NoSQL databases in their answers. In reality, these technologies are </strong><em><strong>highly overlapping</strong></em><strong>. Broad statements like &quot;I need a relational database for data relationships&quot; (NoSQL databases can excel at this) or &quot;I must use NoSQL for scale and performance&quot; (well-configured relational databases can perform and scale admirably) often reveal inexperience.</strong></p><p id="13bffbff-6dcb-80ce-8ebf-f0756664571f" class=""><strong>The truth is, </strong><em><strong>most interviewers don&#x27;t require an explicit SQL vs. NoSQL comparison</strong></em><strong> in your session—it&#x27;s a pitfall best avoided. Instead, focus on the database you&#x27;re using and how it addresses the problem at hand. If asked to compare, discuss the differences in databases you&#x27;re familiar with and their impact on your design. For example, &quot;I&#x27;m using Postgres because its ACID properties ensure data integrity&quot; is a strong approach.</strong></p><h3 id="13bffbff-6dcb-804c-9bb4-c483b8d269b1" class="">Relational database</h3><p id="13bffbff-6dcb-8029-b932-f51ad19b7171" class="">They&#x27;re often used for transactional data (e.g. user records, order records, etc) and are typically the default choice for a product design interview. Postgres is a safe choice.</p><h3 id="13bffbff-6dcb-806b-8d26-ca80a33f479d" class="">NoSQL database</h3><p id="13bffbff-6dcb-8004-bb01-f07edcaabdfe" class=""><strong>The places where NoSQL databases excel are not necessarily places where relational databases fail (and vice-versa). For example, while NoSQL databases are great for handling unstructured data, relational databases can also have JSON columns with flexible schemas. While NoSQL databases are great for scaling horizontally, relational databases can also scale horizontally with the right architecture. When you&#x27;re discussing NoSQL databases in your system design interview, make sure you&#x27;re not making broad statements but instead discussing the specific features of the database you&#x27;re using and how they will help you solve the problem at hand.</strong></p><p id="13bffbff-6dcb-80e0-9dfb-d10720fae856" class="">DynamoDB is a safe choice</p><h3 id="13cffbff-6dcb-8021-b770-ec211d91a5ca" class="">Blob Storage</h3><p id="13cffbff-6dcb-8022-8819-e023b0a25ffb" class=""><strong>Avoid using blob storage like S3 as your primary data store unless you have a very good reason. In a typical set up you will have a core database like Postgres or DynamoDB that has pointers (just a url) to the blobs stored in S3. This allows you to use the database to query and index the data, while still getting the benefits of cheap blob storage.</strong></p><h3 id="13cffbff-6dcb-8043-9eff-c3c8ffc40993" class=""><strong>Search Optimized Database</strong></h3><p id="13cffbff-6dcb-8009-8e81-c01ed2280903" class=""><strong>Things you should know about search optimized databases</strong></p><ol type="1" id="13cffbff-6dcb-8097-ba5a-c1d4cbefc9a6" class="numbered-list" start="1"><li><strong>Inverted Indexes</strong>: As just mentioned, search optimized databases use inverted indexes to make search queries fast and efficient. An inverted index is a data structure that maps from words to the documents that contain them. This allows you to quickly find documents that contain a given word.</li></ol><ol type="1" id="13cffbff-6dcb-80f5-bc37-c7e1688bc4af" class="numbered-list" start="2"><li><strong>Tokenization</strong>: Tokenization is the process of breaking a piece of text into individual words. This allows you to map from words to documents in the inverted index.</li></ol><ol type="1" id="13cffbff-6dcb-8037-b80a-e93e668daee8" class="numbered-list" start="3"><li><strong>Stemming</strong>: Stemming is the process of reducing words to their root form. This allows you to match different forms of the same word. For example, &quot;running&quot; and &quot;runs&quot; would both be reduced to &quot;run&quot;.</li></ol><ol type="1" id="13cffbff-6dcb-807f-b28a-d64876cdd296" class="numbered-list" start="4"><li><strong>Fuzzy Search</strong>: Fuzzy search is the ability to find results that are similar to a given search term. Most search optimized databases support fuzzy search out of the box as a configuration option. In short, this works by using algorithms that can tolerate slight misspellings or variations in the search term. This is achieved through techniques like edit distance calculation, which measures how many letters need to be changed, added, or removed to transform one word into another.</li></ol><ol type="1" id="13cffbff-6dcb-80d4-85eb-ecdda9a69b2a" class="numbered-list" start="5"><li><strong>Scaling</strong>: Just like traditional databases, search optimized databases scale by adding more nodes to a cluster and sharding data across those nodes.</li></ol><p id="13cffbff-6dcb-80f5-894f-ddf44f29061d" class="">The clear leader in this space is <strong><a href="https://www.elastic.co/elasticsearch/">Elasticsearch</a></strong>. Elasticsearch is a distributed, RESTful search and analytics engine that is built on top of Apache Lucene.</p><h1 id="13cffbff-6dcb-801c-a044-fd76bef00b75" class="">API Gateway</h1><p id="13cffbff-6dcb-8095-8830-d45f3f46f776" class="">Nearly all product design style system design interviews, it is a good idea to include an API gateway in your design as the first point of contact for your clients.</p><h1 id="13cffbff-6dcb-80b0-bf8b-d5c17e8e0294" class="">Load Balancer</h1><h3 id="13cffbff-6dcb-80e8-8594-e3e154fd19db" class=""><strong>What is a load balancer and when should you use it?</strong></h3><p id="13cffbff-6dcb-80cd-bee8-f75eb4ed2661" class="">Most system design problems will require you to design a system that can handle a large amount of traffic. When you have a large amount of traffic, you will need to distribute that traffic across multiple machines to avoid overloading any single machine (called horizontal scaling). This is where a load balancer comes in.</p><h1 id="13cffbff-6dcb-805e-a5d1-ffa36b07d19e" class=""><strong>Queue</strong></h1><p id="13cffbff-6dcb-80cb-aab5-f00fe8058a8e" class="">Queues serve as buffers for bursty traffic or as a means of distributing work across a system.</p><h3 id="13cffbff-6dcb-8018-8799-d313123c928d" class=""><strong>Things you should know about queues for your interview</strong></h3><ol type="1" id="13cffbff-6dcb-8032-addc-ecd7eed096e6" class="numbered-list" start="1"><li><strong>Message Ordering</strong>: Most queues are FIFO (first in, first out), meaning that messages are processed in the order they were received. However, some queues (like <strong><a href="https://www.hellointerview.com/learn/system-design/deep-dives/kafka">Kafka</a></strong>) allow for more complex ordering guarantees, such as ordering based on a specified priority or time.</li></ol><ol type="1" id="13cffbff-6dcb-8094-b695-f7c6f88710eb" class="numbered-list" start="2"><li><strong>Retry Mechanisms</strong>: Many queues have built-in retry mechanisms that attempt to redeliver a message a certain number of times before considering it a failure. You can configure retries, including the delay between attempts, and the maximum number of attempts.</li></ol><ol type="1" id="13cffbff-6dcb-80fc-833b-dc05fd964dde" class="numbered-list" start="3"><li><strong>Dead Letter Queues</strong>: Dead letter queues are used to store messages that cannot be processed. They&#x27;re useful for debugging and auditing, as it allows you to inspect messages that failed to be processed and understand why they failed.</li></ol><ol type="1" id="13cffbff-6dcb-8004-8365-e01f5e288cc5" class="numbered-list" start="4"><li><strong>Scaling with Partitions</strong>: Queues can be partitioned across multiple servers so that they can scale to handle more messages. Each partition can be processed by a different set of workers. Just like databases, you will need to specify a partition key to ensure that related messages are stored in the same partition.</li></ol><ol type="1" id="13cffbff-6dcb-805e-8adf-f090eea684b2" class="numbered-list" start="5"><li><strong>Backpressure</strong>: Backpressure is a way of slowing down the production of messages when the queue is overwhelmed. This helps prevent the queue from becoming a bottleneck in your system. For example, if a queue is full, you might want to reject new messages or slow down the rate at which new messages are accepted, potentially returning an error to the user or producer.</li></ol><h1 id="13cffbff-6dcb-8057-957d-ca2926e74a95" class=""><strong>Streams / Event Sourcing</strong></h1><p id="13cffbff-6dcb-8045-a63b-f50857179874" class="">Streams are a good choice...</p><ol type="1" id="13cffbff-6dcb-80f8-9cf8-f099eb5e90a7" class="numbered-list" start="1"><li><strong>When you need to process large amounts of data in real-time.</strong> Imagine designing a system for a social media platform where you need to display real-time analytics of user engagements (likes, comments, shares) on posts. You can use a stream to ingest high volumes of engagement events generated by users across the globe. A stream processing system (like Apache Flink or Spark Streaming) can process these events in real-time to update the analytics dashboard.</li></ol><ol type="1" id="13cffbff-6dcb-80e8-9e24-d1ced797a419" class="numbered-list" start="2"><li><strong>When you need to support complex processing scenarios like event sourcing.</strong> Consider a banking system where every transaction (deposits, withdrawals, transfers) needs to be recorded and could affect multiple accounts. Using event sourcing with a stream like Kafka, each transaction is an event that can be stored, processed, and replayed. This setup not only allows for real-time processing of transactions but also enables the bank to audit transactions, rollback changes, or reconstruct the state of any account at any point in time by replaying the events.</li></ol><ol type="1" id="13cffbff-6dcb-8097-a601-ea30598706cd" class="numbered-list" start="3"><li><strong>When you need to support multiple consumers reading from the same stream.</strong> In a real-time chat application, when a user sends a message, it&#x27;s published to a stream associated with the chat room. This stream acts as a centralized channel where all chat participants are subscribers. As the message is distributed through the stream, each participant (consumer) receives the message simultaneously, allowing for real-time communication. <strong>This is a great example of a publish-subscribe pattern, which is a common use case for streams.</strong></li></ol><h3 id="13cffbff-6dcb-8021-bca7-d92302edee08" class=""><strong>Things you should know about streams for your interview</strong></h3><ol type="1" id="13cffbff-6dcb-80da-9ece-cdaac7b2efcf" class="numbered-list" start="1"><li><strong>Scaling with Partitioning</strong>: In order to scale streams, they can be partitioned across multiple servers. Each partition can be processed by a different consumer, allowing for horizontal scaling. Just like databases, you will need to specify a partition key to ensure that related events are stored in the same partition.</li></ol><ol type="1" id="13cffbff-6dcb-8008-8a72-dced46bd34fc" class="numbered-list" start="2"><li><strong>Multiple Consumer Groups</strong>: Streams can support multiple consumer groups, allowing different consumers to read from the same stream independently. This is useful for scenarios where you need to process the same data in different ways. For example, in a real-time analytics system, one consumer group might process events to update a dashboard, while another group processes the same events to store them in a database for historical analysis.</li></ol><ol type="1" id="13cffbff-6dcb-808f-bfdb-c4af5fc51079" class="numbered-list" start="3"><li><strong>Replication</strong>: In order to support fault tolerance, just like databases, streams can replicate data across multiple servers. This ensures that if a server fails, the data can still be read from another server.</li></ol><ol type="1" id="13cffbff-6dcb-8092-9319-d708b08d7e06" class="numbered-list" start="4"><li><strong>Windowing</strong>: Streams can support windowing, which is a way of grouping events together based on time or count. This is useful for scenarios where you need to process events in batches, such as calculating hourly or daily aggregates of data. Think about a real-time dashboard that shows mean delivery time per region over the last 24 hours.</li></ol><h1 id="13cffbff-6dcb-80d5-82df-d820b4f3e9c7" class=""><strong>Distributed Lock</strong></h1><p id="13cffbff-6dcb-8052-85ec-dc9db346a514" class="">Distributed locks are perfect for situations where you need to lock something across different systems or processes for a reasonable period of time. They&#x27;re often implemented using a distributed key-value store like Redis or Zookeeper.</p><h3 id="13cffbff-6dcb-80b2-957a-e2ecebaee74f" class=""><strong>Things you should know about distributed locks for your interview</strong></h3><ol type="1" id="13cffbff-6dcb-80b7-8f75-c6df6317c51d" class="numbered-list" start="1"><li><strong>Locking Mechanisms</strong>: There are different ways to implement distributed locks. One common implementation uses Redis and is called Redlock. Redlock uses multiple Redis instances to ensure that a lock is acquired and released in a safe and consistent manner.</li></ol><ol type="1" id="13cffbff-6dcb-80fc-be17-df3541e64ba6" class="numbered-list" start="2"><li><strong>Lock Expiry</strong>: Distributed locks can be set to expire after a certain amount of time. This is important for ensuring that locks don&#x27;t get stuck in a locked state if a process crashes or is killed.</li></ol><ol type="1" id="13cffbff-6dcb-8023-bf3b-e4f077a6cde3" class="numbered-list" start="3"><li><strong>Locking Granularity</strong>: Distributed locks can be used to lock a single resource or a group of resources. For example, you might want to lock a single ticket in a ticketing system or you might want to lock a group of tickets in a section of a stadium.</li></ol><ol type="1" id="13cffbff-6dcb-803a-b391-c7b740c6cebf" class="numbered-list" start="4"><li><strong>Deadlocks</strong>: Deadlocks can occur when two or more processes are waiting for each other to release a lock. Think about a situation where two processes are trying to acquire two locks at the same time. One process acquires lock A and then tries to acquire lock B, while the other process acquires lock B and then tries to acquire lock A. This can lead to a situation where both processes are waiting for each other to release a lock, causing a deadlock. You should be prepared to discuss how to prevent this.</li></ol><h1 id="13cffbff-6dcb-8013-a465-e96b898201af" class=""><strong>Distributed Cache</strong></h1><h3 id="13cffbff-6dcb-8003-b238-df4fe11fba70" class=""><strong>What is a distributed cache and when should you use it?</strong></h3><p id="13cffbff-6dcb-800a-be86-ee0757ad8126" class="">In most system design interviews you&#x27;ll be tasked with both scaling your system and lowering system latency. One common way to do this is to use a distributed cache. A cache is just a server, or cluster of servers, that stores data in memory. They&#x27;re great for storing data that&#x27;s expensive to compute or retrieve from a database.</p><h3 id="13cffbff-6dcb-8038-9856-c8237fed6da8" class=""><strong>Things you should know about distributed caches for your interview</strong></h3><ol type="1" id="13cffbff-6dcb-8002-acdb-d8b5f4c5e6ba" class="numbered-list" start="1"><li><strong>Eviction Policy</strong>: Distributed caches have different eviction policies that determine which items are removed from the cache when the cache is full. Some common eviction policies are:<ul id="13cffbff-6dcb-80a1-bcce-c63982c0b708" class="bulleted-list"><li style="list-style-type:disc">Least Recently Used (LRU): Evicts the least recently accessed items first.</li></ul><ul id="13cffbff-6dcb-8076-a5e9-f580bfecf926" class="bulleted-list"><li style="list-style-type:disc">First In, First Out (FIFO): Evicts items in the order they were added.</li></ul><ul id="13cffbff-6dcb-8096-b7df-d96472c8fe6f" class="bulleted-list"><li style="list-style-type:disc">Least Frequently Used (LFU): Removes items that are least frequently accessed.</li></ul></li></ol><ol type="1" id="13cffbff-6dcb-807d-974b-d7ef358c94ff" class="numbered-list" start="2"><li><strong>Cache Invalidation Strategy</strong>: This is the strategy you&#x27;ll use to ensure that the data in your cache is up to date. For example, if you are designing Ticketmaster and caching popular events, then you&#x27;ll need to invalidate an event in the cache if the event in your Database was updated (like the venue changed).</li></ol><ol type="1" id="13cffbff-6dcb-8036-8ccb-c7add23c5a68" class="numbered-list" start="3"><li><strong>Cache Write Strategy</strong>: This is the strategy you use to make sure that data is written to your cache in a consistent way. Some strategies are:<ul id="13cffbff-6dcb-80a4-8be1-d27d06e732d3" class="bulleted-list"><li style="list-style-type:disc">Write-Through Cache: Writes data to both the cache and the underlying datastore simultaneously. Ensures consistency but can be slower for write operations.</li></ul><ul id="13cffbff-6dcb-80a5-89d4-dce1840688a0" class="bulleted-list"><li style="list-style-type:disc">Write-Around Cache: Writes data directly to the datastore, bypassing the cache. This can minimize cache pollution but might increase data fetch times on subsequent reads.</li></ul><ul id="13cffbff-6dcb-8075-8c3e-feab74e5a742" class="bulleted-list"><li style="list-style-type:disc">Write-Back Cache: Writes data to the cache and then asynchronously writes the data to the datastore. This can be faster for write operations but can lead to data loss if the cache is not persisted to disk.</li></ul></li></ol><h1 id="13cffbff-6dcb-8017-bd78-c27865120004" class=""><strong>CDN</strong></h1><p id="13cffbff-6dcb-802d-a4c6-f5a89b70610c" class="">Users (and interviewers) expect fast load times, and delays can lead to a poor user experience and loss of traffic. A content delivery network (CDN) is a type of cache that uses distributed servers to deliver content to users based on their geographic location. CDNs are often used to deliver static content like images, videos, and HTML files, but they can also be used to deliver dynamic content like API responses.</p><p id="13cffbff-6dcb-801f-b62d-f7958505f890" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

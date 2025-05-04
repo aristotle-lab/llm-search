@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 llama-stack = "*"
-llama-stack-client = "*"
 psycopg2 = "*"
 psycopg2-binary = "*"
+llama-stack-client = "*"
 
 [dev-packages]
 
